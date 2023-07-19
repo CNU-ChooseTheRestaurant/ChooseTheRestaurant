@@ -2,22 +2,24 @@ import axios from "axios";
 import React, {useEffect, useState} from "react";
 import Pagination from 'react-js-pagination'
 import PaginationBox from "../../util/PaginationBox";
+import ranking_dummy from '../dummyData/ranking.json'
 
 
 function RankingTable(props) {
     let count = 1;
-    const [ranking, setRanking] = useState([]);
-    useEffect(() => {
-        axios.get(`/api/Ranking/${props.category}`)
-            .then(response => {
-                setRanking(response.data);
-                props.setStore(response.data)
-                console.log("Ranking: ", response.data);
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    }, []);
+    // const [ranking, setRanking] = useState([]);
+    const [ranking, setRanking] = useState(ranking_dummy);
+    // useEffect(() => {
+    //     axios.get(`/api/Ranking/${props.category}`)
+    //         .then(response => {
+    //             setRanking(response.data);
+    //             props.setStore(response.data)
+    //             console.log("Ranking: ", response.data);
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //         })
+    // }, []);
 
     const [page, setPage] = useState(1);
     const [items, setItems] = useState(8);

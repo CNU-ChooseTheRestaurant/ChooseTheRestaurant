@@ -6,18 +6,20 @@ import Menus from "./Menus";
 import TabBar from "./TabBar";
 import MoreInfo from "./MoreInfo";
 
+
 function Store() {
     let {storeId} = useParams();
-    useEffect(() => {
-        axios.get(`/api/Store/${storeId}`)
-            .then(response => {
-                setData(response.data);
-                console.log(response.data);
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    }, []);
+    // useEffect(() => {
+    //     axios.get(`/api/Store/${storeId}`)
+    //         .then(response => {
+    //             setData(response.data);
+    //             console.log(response.data);
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //         })
+    // }, []);
+
     const [store, setData] = useState([]);
 
     const content =

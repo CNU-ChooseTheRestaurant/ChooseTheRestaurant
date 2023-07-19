@@ -1,4 +1,7 @@
 import React from "react";
+import game01 from '../dummyImg/game01.jpg'
+import game02 from '../dummyImg/game02.jpg'
+import game03 from '../dummyImg/game03.jpg'
 
 function Top3(props){
     const store = props.store;
@@ -7,7 +10,8 @@ function Top3(props){
             <div className="text-center" style={{width:"25%"}}>
                 <h3>2위</h3>
                 <div className="card w-auto m-1 overflow-hidden" >
-                    {store[1] && <img src={`/image/${store[1].store_id}`} alt="..." />}
+                    {/* {store[1] && <img src={`/image/${store[1].store_id}`} alt="..." />} */}
+                    <img src={game02} alt="..." />
                     <div className="carousel-caption" style={{height:"1rem"}}>
                         <p>{store[1] && store[1]["store_name"]}</p>
                     </div>
@@ -17,7 +21,8 @@ function Top3(props){
             <div className="text-center" style={{width:"50%"}}>
                 <h3>1위</h3>
                 <div className="card w-auto m-1 overflow-hidden">
-                    {store[0] && <img src={`/image/${store[0].store_id}`} alt="..." />}
+                    {/* {store[0] && <img src={`/image/${store[0].store_id}`} alt="..." />} */}
+                    <img src={game01} alt="..." />
                     <div className="carousel-caption" style={{height:"1rem"}}>
                         <p>{store[0] && store[0]["store_name"]}</p>
                     </div>
@@ -27,7 +32,8 @@ function Top3(props){
             <div className="text-center" style={{width:"25%"}}>
                 <h3>3위</h3>
                 <div className="card w-auto m-1 overflow-hidden">
-                    {store[2] && <img src={`/image/${store[2].store_id}`} alt="..." />}
+                    {/* {store[2] && <img src={`/image/${store[2].store_id}`} alt="..." />} */}
+                    <img src={game03} alt="..." />
                     <div className="carousel-caption" style={{height:"1rem"}}>
                         <p>{store[2] && store[2]["store_name"]}</p>
                     </div>
