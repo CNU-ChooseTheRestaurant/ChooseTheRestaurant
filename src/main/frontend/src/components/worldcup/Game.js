@@ -3,12 +3,18 @@ import axios from "axios";
 import {useParams} from "react-router-dom";
 import {Timeline, Tween} from 'react-gsap';
 import gsap from 'gsap';
+import game01 from '../dummyImg/game01.jpg'
+import game02 from '../dummyImg/game02.jpg'
+import item_dummy from '../dummyData/items.json'
+
+
 
 function Game() {
     const {categoryId} = useParams();
     const {numOfRound} = useParams();
 
-    const [items, setItem] = useState([]); // 월드컵 아이템 리스트
+    // const [items, setItem] = useState([]); // 월드컵 아이템 리스트
+    const [items, setItem] = useState(item_dummy);
     const [winners, setWinner] = useState([]);
     const [round, setRound] = useState(numOfRound);
     const [count, setCount] = useState(1);
@@ -84,7 +90,8 @@ function Game() {
                          .to(box1Ref.current, 0, {});
                      WinnerChoice(items[0])
                  }}>
-                <img src={`/image/${items[0] && items[0]["store_id"]}`} className="rounded-start img-fluid h-100 w-100" />
+                {/* <img src={`/image/${items[0] && items[0]["store_id"]}`} className="rounded-start img-fluid h-100 w-100" /> */}
+                <img src={game01} className="rounded-start img-fluid h-100 w-100"/>
                 <div className="carousel-caption fs-3">
                     <p>{items[0] && items[0]["store_name"]}</p>
                 </div>
@@ -103,7 +110,8 @@ function Game() {
                          .to(box2Ref.current, 0, {});
                      WinnerChoice(items[1])
                  }}>
-                <img src={`/image/${items[1] && items[1]["store_id"]}`} className="rounded-start img-fluid h-100 w-100"/>
+                {/* <img src={`/image/${items[1] && items[1]["store_id"]}`} className="rounded-start img-fluid h-100 w-100"/> */}
+                <img src={game02} className="rounded-start img-fluid h-100 w-100"/>
                 <div className="carousel-caption fs-3">
                     <p>{items[1] && items[1]["store_name"]}</p>
                 </div>

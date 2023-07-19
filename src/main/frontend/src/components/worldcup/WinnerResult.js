@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {useParams} from "react-router-dom";
 import StartButton from "./StartButton";
+import game01 from '../dummyImg/game01.jpg'
 
 function WinnerResult() {
     let {categoryId} = useParams();
@@ -14,35 +15,35 @@ function WinnerResult() {
     const [comments, setComments] = useState([]);
     const [favorite, setFavorite] = useState(false);
 
-    useEffect(() => {
-            axios.get(`/api/Ranking/${categoryId}/${storeId}`)
-                .then(response => {
-                    setStore(response.data);
-                    console.log(response.data);
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-            axios.get(`/api/Comment/${storeId}`)
-                .then(response => {
-                    setComments(response.data);
-                    console.log(response.data);
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-            axios.get(`/api/Category/${categoryId}`)
-                .then(response => {
-                    setLikeNum(response.data.favorite);
-                    setCategoryName(response.data.category_name);
-                    setNumOfStore(response.data.num_of_stores);
-                    console.log(response.data);
-                })
-                .catch(error => {
-                    console.log(error);
-                });
-        },
-        []);
+    // useEffect(() => {
+    //         axios.get(`/api/Ranking/${categoryId}/${storeId}`)
+    //             .then(response => {
+    //                 setStore(response.data);
+    //                 console.log(response.data);
+    //             })
+    //             .catch(error => {
+    //                 console.log(error);
+    //             });
+    //         axios.get(`/api/Comment/${storeId}`)
+    //             .then(response => {
+    //                 setComments(response.data);
+    //                 console.log(response.data);
+    //             })
+    //             .catch(error => {
+    //                 console.log(error);
+    //             });
+    //         axios.get(`/api/Category/${categoryId}`)
+    //             .then(response => {
+    //                 setLikeNum(response.data.favorite);
+    //                 setCategoryName(response.data.category_name);
+    //                 setNumOfStore(response.data.num_of_stores);
+    //                 console.log(response.data);
+    //             })
+    //             .catch(error => {
+    //                 console.log(error);
+    //             });
+    //     },
+    //     []);
 
     // 내가 남기는 간단 코멘트
     const [newComment, setNewComment] = useState('');
@@ -91,9 +92,12 @@ function WinnerResult() {
             <h4 className="mb-5 p-2">월드컵 진행 결과</h4>
             <div className="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 justify-content-evenly">
                 <div className="col text-center">
-                    <img className="w-100" src={`/image/${storeId}`}/>
-                    <p className="fw-bold">{`${store["store_name"]}는 전체 랭킹에서 ${store["rank"]}등을 차지했어요!`}</p>
-                    <p>{`별점 ${store["stars"]}`}</p>
+                    {/* <img className="w-100" src={`/image/${storeId}`}/> */}
+                    <img className="w-100" src={game01}/>
+                    {/* <p className="fw-bold">{`${store["store_name"]}는 전체 랭킹에서 ${store["rank"]}등을 차지했어요!`}</p> */}
+                    <p className="fw-bold">오늘의파스타는 전체 랭킹에서 2등을 차지했어요!</p>
+                    {/* <p>{`별점 ${store["stars"]}`}</p> */}
+                    <p>별점 4.2</p>
                 </div>
                 <div className="col">
                     <table className="table table-hover table-sm text-center">
@@ -114,7 +118,8 @@ function WinnerResult() {
                 </div>
             </div>
             <div className="m-5">
-                <h5 className="me-3">{`내가 남기는 ${store["store_name"]} 간단 코멘트`}</h5>
+                {/* <h5 className="me-3">{`내가 남기는 ${store["store_name"]} 간단 코멘트`}</h5> */}
+                <h5 className="me-3">내가 남기는 오늘은 파스타 간단 코멘트</h5>
                 <div className="d-flex mb-2">
                     <input className="form-control w-50" onChange={updateComment} value={newComment}/>
                     <button className="btn btn-outline-secondary" type={"button"} onClick={addReview}>등록하기
