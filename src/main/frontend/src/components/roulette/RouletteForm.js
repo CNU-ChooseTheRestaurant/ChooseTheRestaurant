@@ -5,9 +5,11 @@ import { BiTrash, BiGridVertical, BiPlus } from "react-icons/bi";
 import { v4 as uuidv4 } from "uuid";
 import Roulette from "./Roulette";
 import {createFuzzyMatcher} from "../../util/util";
+import store_dummy from '../dummyData/store.json'
+import game01 from '../dummyImg/game01.jpg'
 
 const FormularioTexto = () => {
-  const [store, setStore] = useState([]);
+  const [store, setStore] = useState(store_dummy);
   const [searchBox, setSearchBox] = useState('');
   const updateSearchBox = e => setSearchBox(e.target.value);
 
@@ -146,7 +148,9 @@ const FormularioTexto = () => {
                             <div className="card shadow">
                                 <div className="row g-2">
                                     <div className="col-6">
-                                        <img src={`/image/${v.store_id}`} className="rounded-start img-fluid h-100"
+                                        {/* <img src={`/image/${v.store_id}`} className="rounded-start img-fluid h-100"
+                                            style={{objectFit: "cover"}}/> */}
+                                        <img src={game01} className="rounded-start img-fluid h-100"
                                             style={{objectFit: "cover"}}/>
                                     </div>
                                     <div className="col-5">

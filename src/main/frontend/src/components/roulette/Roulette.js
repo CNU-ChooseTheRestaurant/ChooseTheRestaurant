@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Wheel } from "react-custom-roulette";
+import game01 from '../dummyImg/game01.jpg'
 
 const Roulette = ({ data }) => {
   const [mustSpin, setMustSpin] = useState(false);
@@ -87,7 +88,8 @@ const Roulette = ({ data }) => {
           <h1>Result</h1>
           <div>
             <h3>{rouletteData[prizeNumber].completeOption}</h3>
-            <img style={{width:350, borderRadius: "5px"}} src={`/image/${rouletteData[prizeNumber].completeOptionId}`}/>
+            {/* <img style={{width:350, borderRadius: "5px"}} src={`/image/${rouletteData[prizeNumber].completeOptionId}`}/> */}
+            <img style={{width:350, borderRadius: "5px"}} src={game01}/>
           </div>
           
           <div className="btn-wrap">
