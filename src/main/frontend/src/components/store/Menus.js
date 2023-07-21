@@ -1,28 +1,34 @@
 import axios from "axios";
 import React, {useEffect, useState} from "react";
+import menu_dummy from '../dummyData/menu.json'
+import game01 from '../dummyImg/game01.jpg'
 
 function Menus(props) {
 
-    const [menu, setMenu] = useState([]);
-    useEffect(() => {
-        axios.get(`/api/Menu/${props.store}`)
-            .then(response => {
-                setMenu(response.data);
-                // console.log("Menu: ", response.data);
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    }, []);
+    // const [menu, setMenu] = useState([]);
+    const [menu, setMenu] = useState(menu_dummy);
+    // useEffect(() => {
+    //     axios.get(`/api/Menu/${props.store}`)
+    //         .then(response => {
+    //             setMenu(response.data);
+    //             // console.log("Menu: ", response.data);
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //         })
+    // }, []);
 
     return (
         <div className="row row-cols-1 row-cols-xl-2 row-cols-xxl-3 g-4 w-100 m-auto">
             {menu.map(v =>
-                        <div className="col"  key={v.menu_id}>
+                        // <div className="col"  key={v.menu_id}>
+                        <div className="col">
                             <div className="card shadow">
                                 <div className="row">
                                     <div className="col-5">
-                                        <img src={`/image/${v.menu_id}`} className="rounded-start img-fluid h-100"
+                                        {/* <img src={`/image/${v.menu_id}`} className="rounded-start img-fluid h-100"
+                                             style={{objectFit: "cover"}}/> */}
+                                        <img src={game01} className="rounded-start img-fluid h-100"
                                              style={{objectFit: "cover"}}/>
                                     </div>
                                     <div className="col-7 p-1" style={{minHeight:"150px"}}>

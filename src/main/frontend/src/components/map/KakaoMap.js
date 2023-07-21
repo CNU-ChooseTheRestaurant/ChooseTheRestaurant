@@ -1,5 +1,5 @@
 /*global kakao*/
-import React from 'react';
+import React, { useEffect } from 'react';
 import {Link} from 'react-router-dom';
 
 const {kakao} = window;
@@ -13,42 +13,50 @@ address={"대전광역시 유성구 궁동 궁동로18번길 38"}
  */
 function KakaoMap(props) {
 
-    function loadMap(name, address) {
-        kakao.maps.load(() => {
-            const container = document.getElementById('map');
-            const options = {
-                center: new kakao.maps.LatLng(33.450701, 126.570667),
-                level: 3,
-            };
-            const map = new kakao.maps.Map(container, options);
+    useEffect(()=>{
+        const container = document.getElementById('map');
+        const options = {
+            center: new kakao.maps.LatLng(33.450701, 126.570667),
+            level: 3
+        };
+        const map = new kakao.maps.Map(container, options);
+    });
 
-            const geocoder = new kakao.maps.services.Geocoder();
-            geocoder.addressSearch(address, function (result, status) {
-                if (status === kakao.maps.services.Status.OK) {
+    
+    // function loadMap(name, address) {
+    //     kakao.maps.load(() => {
+    //         const container = document.getElementById('map');
+    //         const options = {
+    //             center: new kakao.maps.LatLng(33.450701, 126.570667),
+    //             level: 3,
+    //         };
+    //         const map = new kakao.maps.Map(container, options);
 
-                    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-                    var marker = new kakao.maps.Marker({
-                        map: map,
-                        position: coords
-                    });
+    //         const geocoder = new kakao.maps.services.Geocoder();
+    //         geocoder.addressSearch(address, function (result, status) {
+    //             if (status === kakao.maps.services.Status.OK) {
 
-                    // 인포윈도우로 장소에 대한 설명을 표시합니다
-                    var infowindow = new kakao.maps.InfoWindow({
-                        content: `<div style="width:150px;text-align:center;padding:6px 0;">${name}</div>`
-                    });
-                    infowindow.open(map, marker);
+    //                 var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+    //                 var marker = new kakao.maps.Marker({
+    //                     map: map,
+    //                     position: coords
+    //                 });
 
-                    // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-                    map.setCenter(coords);
-                }
-            });
-        });
-    }
+    //                 // 인포윈도우로 장소에 대한 설명을 표시합니다
+    //                 var infowindow = new kakao.maps.InfoWindow({
+    //                     content: `<div style="width:150px;text-align:center;padding:6px 0;">${name}</div>`
+    //                 });
+    //                 infowindow.open(map, marker);
+
+    //                 // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+    //                 map.setCenter(coords);
+    //             }
+    //         });
+    //     });
+    // }
 
     return (
-        <div className="rounded-5 border border-dark" id={"map"} style={{width:400, height:400}}>
-            {loadMap(props.name, props.address)}
-        </div>
+        <div id="map" style={{width: '100%', height: '100%'}}></div>
     );
 }
 

@@ -5,6 +5,8 @@ import Reviews from "./Reviews";
 import Menus from "./Menus";
 import TabBar from "./TabBar";
 import MoreInfo from "./MoreInfo";
+import store_dummy from '../dummyData/store.json'
+import game01 from '../dummyImg/game01.jpg'
 
 
 function Store() {
@@ -20,7 +22,7 @@ function Store() {
     //         })
     // }, []);
 
-    const [store, setData] = useState([]);
+    const [store, setData] = useState(store_dummy);
 
     const content =
         [
@@ -39,13 +41,14 @@ function Store() {
     return (
         <div>
             <h2 className="d-flex justify-content-center align-items-center text-white" style={{
-                backgroundImage: `url("/image/${storeId}")`,
+                // backgroundImage: `url("/image/${storeId}")`,
+                backgroundImage: `url(${game01})`,
                 height: "180px",
                 backgroundSize: "cover",
                 backgroundPositionY: "center"
-            }}>{store.store_name}</h2>
+            }}>{store[0].store_name}</h2>
             {/*<h5 className="">{store.store_name}</h5>*/}
-            <TabBar store_name={store.store_name} onClickHandler={contentChange} contentItem={contentItem}/>
+            <TabBar store_name={store[0].store_name} onClickHandler={contentChange} contentItem={contentItem}/>
             <div className="row m-5">
                 <div className="col-lg-auto mb-5">
                     <MoreInfo info={store}/>

@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {createFuzzyMatcher} from "../../util/util";
+import menu_dummy from '../dummyData/menu.json'
+import game01 from '../dummyImg/game01.jpg'
 
 function AllMenu() {
-    const [menu, setMenu] = useState([]);
-    const [tag, setTag] = useState([]);
+    const [menu, setMenu] = useState(menu_dummy);
+    const [tag, setTag] = useState([{"tag": "양식"},{"tag": "한식"},{"tag": "패스트푸드"}]);
     const [searchBox, setSearchBox] = useState('');
     const updateSearchBox = e => setSearchBox(e.target.value);
     const [selected, setSelected] = useState([]);
@@ -19,22 +21,22 @@ function AllMenu() {
     //     console.log("selected: ", selected);
     // }, [selected])
 
-    useEffect(() => {
-        axios.get('/api/Menu')
-            .then(response => {
-                setMenu(response.data);
-            })
-            .catch(error => {
-                console.log(error);
-            })
-        axios.get('/api/Tag')
-            .then(response => {
-                setTag(response.data);
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    }, []);
+    // useEffect(() => {
+    //     axios.get('/api/Menu')
+    //         .then(response => {
+    //             setMenu(response.data);
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //         })
+    //     axios.get('/api/Tag')
+    //         .then(response => {
+    //             setTag(response.data);
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //         })
+    // }, []);
 
     return (<div className="p-5">
         <h4 className="pt-2 ps-2"> 메뉴를 선택하세요</h4>
@@ -68,7 +70,9 @@ function AllMenu() {
                                 <div className="card shadow">
                                     <div className="row g-2">
                                         <div className="col">
-                                            <img src={`/image/${v.menu_id}`} className="rounded-start img-fluid h-100"
+                                            {/* <img src={`/image/${v.menu_id}`} className="rounded-start img-fluid h-100"
+                                                 style={{objectFit: "cover"}}/> */}
+                                            <img src={game01} className="rounded-start img-fluid h-100"
                                                  style={{objectFit: "cover"}}/>
                                         </div>
                                         <div className="col-7" style={{minHeight: "200px"}}>

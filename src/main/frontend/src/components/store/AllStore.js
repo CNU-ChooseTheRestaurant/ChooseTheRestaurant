@@ -2,9 +2,11 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {createFuzzyMatcher} from "../../util/util";
 import {Rating} from "@mui/material";
+import store_dummy from '../dummyData/store.json'
+import game01 from '../dummyImg/game01.jpg'
 
 function AllStore() {
-    const [store, setStore] = useState([]);
+    const [store, setStore] = useState(store_dummy);
     const [searchBox, setSearchBox] = useState('');
 
     // const [page, setPage] = useState(1);
@@ -24,16 +26,16 @@ function AllStore() {
     //     setData(store.filter(v => createFuzzyMatcher(searchBox).test(v.store_name.toLowerCase())));
     // }, [searchBox, store])
 
-    useEffect(() => {
-        axios.get('/api/Store')
-            .then(response => {
-                setStore(response.data);
-                console.log(response.data);
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    }, []);
+    // useEffect(() => {
+    //     axios.get('/api/Store')
+    //         .then(response => {
+    //             setStore(response.data);
+    //             console.log(response.data);
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //         })
+    // }, []);
 
     return (<div className="p-5">
         <h4 className="p-2"> 가게를 선택하세요</h4>
@@ -53,7 +55,9 @@ function AllStore() {
                             <div className="card shadow">
                                 <div className="row g-2">
                                     <div className="col-6">
-                                        <img src={`/image/${v.store_id}`} className="rounded-start img-fluid h-100"
+                                        {/* <img src={`/image/${v.store_id}`} className="rounded-start img-fluid h-100"
+                                             style={{objectFit: "cover"}}/> */}
+                                        <img src={game01} className="rounded-start img-fluid h-100"
                                              style={{objectFit: "cover"}}/>
                                     </div>
                                     <div className="col-5" style={{minHeight: "250px"}}>

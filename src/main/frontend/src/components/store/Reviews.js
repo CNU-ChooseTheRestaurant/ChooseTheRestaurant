@@ -6,20 +6,21 @@ import {createFuzzyMatcher} from "../../util/util";
 import SmallReply from "./SmallReply";
 import axios from "axios";
 import PaginationBox from "../../util/PaginationBox";
+import review_dummy from '../dummyData/review.json'
 
 function Reviews(props) {
 
-    const [review, setReview] = useState([]);
-    useEffect(() => {
-        axios.get(`/api/Review/${props.store}`)
-            .then(response => {
-                setReview(response.data);
-                console.log("Review: ", response.data);
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    }, []);
+    const [review, setReview] = useState(review_dummy);
+    // useEffect(() => {
+    //     axios.get(`/api/Review/${props.store}`)
+    //         .then(response => {
+    //             setReview(response.data);
+    //             console.log("Review: ", response.data);
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //         })
+    // }, []);
 
     const [searchBox, setSearchBox] = useState('');
     const updateSearchBox = e => setSearchBox(e.target.value);
